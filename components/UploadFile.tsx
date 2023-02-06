@@ -1,4 +1,4 @@
-import { Button, Stack, Text } from "@mantine/core";
+import { Button, Stack, StylesApiProvider, Text } from "@mantine/core";
 import { Dropzone } from "@mantine/dropzone";
 import { encrypt } from "@metadrive/lib";
 import { useState } from "react";
@@ -12,7 +12,7 @@ import {
   NftMetadata,
 } from "../utils";
 import { UploadSimple } from "phosphor-react";
-
+import styles from "../styles/home.module.css"
 const web3StorageClient = new Web3Storage({
   // @ts-ignore: Object is possibly 'null'.
   token: process.env.NEXT_PUBLIC_WEB3STORAGE_TOKEN,
@@ -115,11 +115,11 @@ export const UploadFile = ({
   };
 
   return (
-    <Stack>
+    <Stack className={styles.top}>
       <Dropzone onDrop={handleDropzoneDrop} multiple={false}>
-        <Stack>
+        <Stack >
           {file ? <Text weight="semibold">Selected: {file.name}</Text> : null}
-          <Text weight="semibold" align="center">
+          <Text weight="semibold" align="center" >
             Drag file here or click to select file
           </Text>
         </Stack>

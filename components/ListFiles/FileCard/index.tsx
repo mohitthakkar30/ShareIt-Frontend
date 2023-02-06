@@ -13,7 +13,7 @@ import { saveAs } from "file-saver";
 import { SharingModal } from "./SharingModal";
 import { useState } from "react";
 import { DownloadSimple, Share } from "phosphor-react";
-
+import styles from "../../../styles/home.module.css"
 interface FileCardProps extends Pick<CommonProps, "connectedWallet"> {
   fileInfo: FileInfo;
 }
@@ -58,6 +58,7 @@ export const FileCard = ({
 
   return (
     <>
+    <div >
       {isOwned ? (
         <SharingModal
           opened={isSharingModalOpened}
@@ -66,7 +67,7 @@ export const FileCard = ({
           tokenId={tokenId}
         />
       ) : null}
-      <Card>
+      <Card className={styles.filecardbg}>
         {isOwned ? (
           <Badge>Owned</Badge>
         ) : (
@@ -93,6 +94,7 @@ export const FileCard = ({
           ) : null}
         </Stack>
       </Card>
+      </div>
     </>
   );
 };

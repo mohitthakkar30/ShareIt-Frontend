@@ -2,7 +2,7 @@ import { Group, NativeSelect, SimpleGrid, Stack } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { CommonProps, FileInfo } from "../../utils";
 import { FileCard } from "./FileCard";
-
+import styles from "../../styles/home.module.css"
 interface ListFilesProps extends Pick<CommonProps, "connectedWallet"> {
   fileInfos: FileInfo[];
 }
@@ -33,7 +33,7 @@ export const ListFiles = ({ connectedWallet, fileInfos }: ListFilesProps) => {
 
   return (
     <Stack>
-      <Group position="right">
+      <Group position="right" className={styles.right}>
         <NativeSelect
           data={selectValues}
           label="Filter files"
@@ -45,7 +45,7 @@ export const ListFiles = ({ connectedWallet, fileInfos }: ListFilesProps) => {
           }
         />
       </Group>
-      <SimpleGrid cols={6}>
+      <SimpleGrid cols={6} className={styles.alignment}>
         {filesToShow.map((fileInfo: FileInfo) => (
           <FileCard
             key={fileInfo.tokenId}

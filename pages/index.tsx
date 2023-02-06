@@ -19,7 +19,7 @@ import { MetaMaskInpageProvider } from "@metamask/providers";
 import { config } from "../config";
 import { ethers } from "ethers";
 import { useListState } from "@mantine/hooks";
-
+import styles from "../styles/home.module.css"
 const Home: NextPage = () => {
   const [connectedWallet, setConnectedWallet] = useState<string | null>(null);
   const [connectedPublicKey, setConnectedPublicKey] = useState<Buffer | null>(
@@ -127,7 +127,7 @@ const Home: NextPage = () => {
     <AppShell
       padding="md"
       header={
-        <Header height={60} p="xs">
+        <Header height={60} p="xs" className={styles.navbg}>
           <Group position="apart">
             <Text size="lg" weight="bold">
               ShareIt
@@ -150,6 +150,7 @@ const Home: NextPage = () => {
         },
       })}
     >
+      <div className={styles.background}>
       {loading ? (
         <Center>
           <Stack>
@@ -189,6 +190,7 @@ const Home: NextPage = () => {
           </Text>
         </Group>
       )}
+      </div>
     </AppShell>
   );
 };
