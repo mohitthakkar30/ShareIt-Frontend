@@ -20,6 +20,20 @@ import { config } from "../config";
 import { ethers } from "ethers";
 import { useListState } from "@mantine/hooks";
 import styles from "../styles/home.module.css"
+
+
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import { configureChains, createClient, WagmiConfig } from 'wagmi';
+import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+
 const Home: NextPage = () => {
   const [connectedWallet, setConnectedWallet] = useState<string | null>(null);
   const [connectedPublicKey, setConnectedPublicKey] = useState<Buffer | null>(
@@ -124,6 +138,7 @@ const Home: NextPage = () => {
   });
 
   return (
+    
     <AppShell
       padding="md"
       header={
@@ -138,6 +153,8 @@ const Home: NextPage = () => {
               isNetworkValid={isNetworkValid}
               setIsNetworkValid={setIsNetworkValid}
             />
+            {/* <ConnectWallet/> */}
+
           </Group>
         </Header>
       }

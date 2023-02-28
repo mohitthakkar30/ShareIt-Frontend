@@ -17,6 +17,8 @@ const ConnectWallet = ({
 }: ConnectWalletProps) => {
   // Connect Metamask wallet
   const connectWallet = async () => {
+    console.log("CLicked...");
+    
     if (!window.ethereum) {
       return;
     }
@@ -40,6 +42,8 @@ const ConnectWallet = ({
 
   // Change chain on Metamask to the one we want
   const changeChain = async () => {
+    console.log("Chain change called..");
+    
     if (!window.ethereum) {
       console.log("Metamask is not installed.");
       return;
@@ -76,8 +80,8 @@ const ConnectWallet = ({
       variant="gradient"
       gradient={{ from: "orange", to: "red" }}
       onClick={async () => {
-        await changeChain();
         await connectWallet();
+        await changeChain();
       }}
     >
       Connect Wallet
